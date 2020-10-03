@@ -31,27 +31,27 @@ class Sort {
     merge(arr = []) {
 
         function mergeArrays(leftArr = [], rightArr = []) {
-            let leftIndex = 0,
-                rightIndex = 0;
+            let l = 0,
+                r = 0;
             let tempArr = [];
-            while (leftIndex < leftArr.length && rightIndex < rightArr.length) {
-                if (leftArr[leftIndex] < rightArr[rightIndex]) {
-                    tempArr.push(leftArr[leftIndex]);
-                    leftIndex++;
+            while (l < leftArr.length && r < rightArr.length) {
+                if (leftArr[l] < rightArr[r]) {
+                    tempArr.push(leftArr[l]);
+                    l++;
                 } else {
-                    tempArr.push(rightArr[rightIndex]);
-                    rightIndex++;
+                    tempArr.push(rightArr[r]);
+                    r++;
                 }
             }
             // let add the remaining items in the left array
-            while (leftIndex < leftArr.length) {
-                tempArr.push(leftArr[leftIndex]);
-                leftIndex++;
+            while (l < leftArr.length) {
+                tempArr.push(leftArr[l]);
+                l++;
             }
             // let add the remaining items in the right array
-            while (rightIndex < rightArr.length) {
-                tempArr.push(rightArr[rightIndex]);
-                rightIndex++;
+            while (r < rightArr.length) {
+                tempArr.push(rightArr[r]);
+                r++;
             }
             return tempArr;
         }

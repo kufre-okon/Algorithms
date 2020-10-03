@@ -65,4 +65,42 @@ function pivotedBinarySearch(arr, key, l, r) {
         return binarySearch(arr, key, n - 1, pivot + 1);
 }
 
+
+
+//----------------------------------- VERSION 2 ------------------------------------//
+
+/**
+ * first of all, we gat the left and right elements of the array, then
+ * use a slightly modified binary search to search 
+ * each of the sub array to look for the target
+ */
+
+function searchArray(arr = [], T) {
+    let l = 0,
+        r = arr.length - 1,
+        leftNum = arr[0],
+        rightNum = arr[r];
+
+    while (l <= r) {
+        let mid = Math.floor((r + l) / 2);
+
+        if (arr[mid] == T)
+            return mid;
+        if (arr[mid] > rightNum) {
+            // we are in the left side of the pivot
+            if (T >= leftNum && T < arr[mid])
+                r = mid - 1;
+            else
+                l = mid + 1;
+        } else {
+            // we are in the right side of the pivot
+            if (T <= rightNum && T > arr[mid])
+                l = mid + 1;
+            else
+                r = mid - 1;
+        }
+    }
+    return -1;
+}
+
 console.log(pivotedBinarySearch([5, 6, 7, 8, 9, 10, 1, 2, 3], 2))

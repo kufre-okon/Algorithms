@@ -3,16 +3,16 @@ class Search {
 
     binary(arr = [], target) {
 
-        let max = arr.length - 1,
-            min = 0;
-        while (max >= min) {
-            let middle = Math.floor((max + min) / 2);
-            if (arr[middle] === target)
-                return middle;
-            if (arr[middle] > target) {
-                max = middle - 1;
+        let r = arr.length - 1,
+            l = 0;
+        while (r >= l) {
+            let mid = Math.floor((r + l) / 2);
+            if (arr[mid] === target)
+                return mid;
+            if (arr[mid] > target) {
+                r = mid - 1;
             } else {
-                min = middle + 1;
+                l = mid + 1;
             }
         }
         return -1;
